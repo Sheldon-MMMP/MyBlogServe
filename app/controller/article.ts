@@ -10,6 +10,7 @@ export default class ArticleController extends Controller {
         desc: '类型',
         required: true,
         range: {
+          // eslint-disable-next-line array-bracket-spacing
           in: ['html', 'css', 'js', 'vue', 'react', 'http'],
         },
       },
@@ -20,13 +21,22 @@ export default class ArticleController extends Controller {
         },
       },
     });
-    const { category, id } = ctx.request.body;
-    const find = await app.model.blogList.findOne({ where: { category_id: category, article_id: id } });
+    // eslint-disable-next-line array-bracket-spacing
+    const [category, id] = ctx.captures;
+    const find = await app.model.BlogList.findOne({ where: { category_id: category, article_id: id } });
 
-    if (find) {
+    if (!find) {
       ctx.throw(400, '文章不存在');
     }
-    console.log(find);
-    ctx.apiSucces();
+
+    ctx.apiSuccess({
+      articleId: find.article_id,
+      articleName: find.article_name,
+      category: find.article_id,
+      type: find.type_id,
+      path: find.md_path,
+      createAt: find.created_at,
+      updatedAt: find.updated_at,
+    });
   }
 }
