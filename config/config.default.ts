@@ -8,7 +8,7 @@ export default (appInfo: EggAppInfo) => {
   config.keys = appInfo.name + '_1665458513588_920';
 
   // add your egg config in here
-  config.middleware = [];
+  config.middleware = ['errorHandler'];
 
   // add your special config in here
   const bizConfig = {
@@ -23,9 +23,9 @@ export default (appInfo: EggAppInfo) => {
     dialect: 'mysql',
     host: '127.0.0.1',
     username: 'root',
-    password: 'root',
+    password: 'Ww2512989241.',
     port: 3306,
-    database: 'friends',
+    database: 'Blog_development',
     // 中国时区
     timezone: '+08:00',
     define: {
