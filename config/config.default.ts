@@ -8,6 +8,7 @@ export default (appInfo: EggAppInfo) => {
   config.keys = appInfo.name + '_1665458513588_920';
 
   // add your egg config in here
+  // eslint-disable-next-line array-bracket-spacing
   config.middleware = ['errorHandler'];
 
   // add your special config in here
@@ -41,6 +42,12 @@ export default (appInfo: EggAppInfo) => {
       // 所有驼峰命名格式化
       underscored: true,
     },
+  };
+  config.cors = {
+    // {string|Function} origin: '*',
+    origin: '*',
+    // {string|Array} allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
   };
 
 
